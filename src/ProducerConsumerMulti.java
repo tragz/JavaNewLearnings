@@ -7,11 +7,11 @@ public class ProducerConsumerMulti {
 
         Thread prodThread  = new Thread(new Producer(sharedQueue,1));
         Thread consThread1 = new Thread(new Consumer(sharedQueue,1));
-        //Thread consThread2 = new Thread(new Consumer(sharedQueue,2));
+
 
         prodThread.start();
         consThread1.start();
-        //consThread2.start();
+
     }
 }
 class Producer implements Runnable {
@@ -58,7 +58,6 @@ class Consumer implements Runnable{
         while(count > 0){
             try {
                 List<Integer> list = new ArrayList<Integer>();
-                //Integer map = new HashMap<Integer, Integer>();
                 sharedQueue.drainTo(list);
                 System.out.println("SIZE:\t" + list.size() );
                 for(Integer i: list) {
